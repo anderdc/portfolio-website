@@ -29,8 +29,13 @@
 
     {% for hobby in hobbies%}
         <div class="hobby">
+            <!-- if it is on the music hobby, add my soundcloud link to the picture-->
+            {% if hobby.name == 'Music' %}
+            <a href="{{ hobby.link }}"> <img src="{{ hobby.picture }}"></a>
+            {% else %}
             <img src="{{ hobby.picture }}">
-
+            {% endif %}
+            
             <div class="hobby-descr">
                 <p>{{ hobby.description }}</p>
             </div>
