@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Portfolio Website",
+        "description": "The code for this very website can be seen here!",
+        "link": "https://github.com/anderdc/portfolio-website",
+        "picture": "./static/img/evenet.png"
+    },
+    {
+        "name": "Work in Progress",
+        "description": "n/a",
+        "link": "",
+        "picture": "./static/img/empty.jpeg"
+    },
+    {
+        "name": "Work in Progress",
+        "description": "n/a",
+        "link": "",
+        "picture": "./static/img/empty.jpeg"
+    }
+]

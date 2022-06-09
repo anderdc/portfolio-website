@@ -67,13 +67,19 @@ body {
     color: #588157;
 }
 
+.home-left-text img{
+    border-radius: 10%;
+    width: 9%;
+    height: auto;
+}
+
 .home-profile-image {
-    padding: 6em 2em 2em 5em;
+    padding: 2em 2em 2em 3em;
     text-align: center;
 }
 
 .home-profile-image img{
     border-radius: 50%;
-    width: 60%;
+    width: 75%;
     height: auto;
 }

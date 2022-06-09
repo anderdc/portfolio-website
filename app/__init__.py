@@ -4,22 +4,20 @@ from jinja2 import Environment, FileSystemLoader
 
 app = Flask(__name__)
 
-a = open('app/data/work.json')
-work_data = json.load(a)
-a.close()
-work_d = work_data.copy()
+#parse files w/ lists of json's
+with open('app/static/data/work.json') as file:
+    data = json.load(file)
+    work_d = data.copy()
 
-b = open('app/data/hobbies.json')
-hobby_data = json.load(b)
-b.close()
-hobbies_d = hobby_data.copy()
+with open('app/static/data/hobbies.json') as file:
+    data = json.load(file)
+    hobbies_d = data.copy()
 
-c = open('app/data/education.json')
-education_data = json.load(c)
-c.close()
-education_d = education_data.copy()
+with open('app/static/data/education.json') as file:
+    data = json.load(file)
+    education_d = data.copy()
 
-
+#flask backend
 @app.route('/')
 def index():
     return render_template('index.html')

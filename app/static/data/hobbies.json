@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Music",
+        "description": "Music is one of the ways I relax & let my true creativity show",
+        "picture": "./static/img/music-pic.jpg",
+        "link": "https://soundcloud.com/lordimbopice"
+
+    },
+    {
+        "name": "Fitness",
+        "description": "Exercise & staying in shape keeps my mind sharp & helps me blow off steam",
+        "picture": "./static/img/fitness.jpg"
+    },
+    {
+        "name": "Traveling",
+        "description": "placerholder for now",
+        "picture": "./static/img/empty.jpeg"
+    }
+]
