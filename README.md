@@ -7,14 +7,6 @@ Create and activate virtual environment using virtualenv
 $ python -m venv python3-virtualenv
 $ source python3-virtualenv/bin/activate
 ```
-TRY THIS IF THE ABOVE DIDNT WORK, its possible your machine has python 2 and 3 installed
-Create and activate virtual environment using virtualenv
-```bash
-$ python3 -m venv python3-virtualenv
-$ source python3-virtualenv/bin/activate
-```
-you might also need to be on Mac or linux based system per our own anecdotal debug attempts
-
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all dependencies!
 
 ```bash
