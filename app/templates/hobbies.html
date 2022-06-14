@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block head %}
 <!--Here goes the title of the page -->
-<title>Portfolio MLH</title>
+<title>Alexander Castañeda</title>
 <link rel="stylesheet" href='./static/css/hobbies.css'>
 {% endblock %}
 
@@ -27,7 +27,7 @@
 
 <div class="interests">
 
-    {% for hobby in hobbies%}
+    {% for hobby in hobbies %}
         <div class="hobby">
             <!-- if it is on the music hobby, add my soundcloud link to the picture-->
             {% if hobby.name == 'Music' %}

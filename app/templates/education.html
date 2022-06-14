@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block head %}
 <!--Here goes the title of the page -->
-<title>Portfolio MLH</title>
+<title>Alexander Castañeda</title>
 <link rel="stylesheet" href='./static/css/education.css'>
 {% endblock %}
 
@@ -20,7 +20,8 @@
 <div class="home" id="home">
     <div class="home-content">
         <div class="home-header">
-            <h1>Part of my <span>education📚</span></h1>
+            <h1>Part of my <span>education 📚</span></h1>
+            <img src="./static/img/ut.png">
             {% for experience in education %}
                 <h2><span>{{ experience.name }}</span><br>{{ experience.description }}</h2>
             {% endfor %}

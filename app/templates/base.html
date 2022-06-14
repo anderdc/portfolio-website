@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block head %}{% endblock %}
+
+    <link rel="stylesheet" href='./static/css/base.css'>
+
+    {% block head %}
+    {% endblock %}
 </head>
+
 <body>
     {% block body %}{% endblock %}
+
+    <!-- links to my socials will be at the bottom of each page-->
+    <footer>
+        
+        <div class="footer-container">
+            <div class="inline-block">
+                <a href="https://twitter.com/LordKimboSpice"> <img src="./static/img/twitter-logo.png"></a>
+            </div>
+            <div class="inline-block">
+                <a href="https://www.linkedin.com/in/alexander-casta%C3%B1eda-990a8b191/"> <img
+                        src="./static/img/linkedin-logo.png"></a>
+            </div>
+            <div class="inline-block">
+                <a href="https://github.com/anderdc"> <img src="./static/img/github-logo.png"></a>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
