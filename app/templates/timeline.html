@@ -19,4 +19,41 @@
     </ul>
 </div>
 
+<!--- HTML form data --->
+<form id="form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email"><br>
+    <label for="content">Content:</label>
+    <input type="text" id="content" name="content"><br>
+    <button type="submit">Submit</button>
+</form> 
+
+<div class="post-container">
+{% for post in posts %}
+    <div class="post">
+        <h1> {{ post.name }}</h1>
+        <h2> {{ post.email }}</h2>
+        <p>{{ post.content }}</p>
+    </div>
+{% endfor %}
+</div>
+
+<script>
+const form = document.getElementById('form');
+ form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    payload = new FormData(document.getElementById("form"));
+    // Post the payload using Fetch:
+    fetch('http://127.0.0.1:5000/api/timeline_post', 
+    {
+    method: 'POST',
+    body: payload,
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+})
+</script>
+
 {% endblock %}

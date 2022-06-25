@@ -62,9 +62,10 @@ def education():
 def travel():
     return render_template('travel.html')
 
+#*****THIS FUNCTION HAS DATA DEPENDENT ON THE API ENDPOINT, if endpoint changes, change this as well*****
 @app.route('/timeline')
 def timeline():
-    return render_template('timeline.html', title='Timeline')
+    return render_template('timeline.html', posts=TimelinePost.select().order_by(TimelinePost.created_at.desc()), endpoint='http://127.0.0.1:5000/api/timeline_post')
 
 #for posting and retrieving database info
 @app.route('/api/timeline_post', methods=['POST'])
