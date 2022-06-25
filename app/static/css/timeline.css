@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;600;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200&display=swap');
+
+/* for the navbar*/
+body {
+    background-color: #F5F5F5;
+}
+
+.top-menu ul{
+    list-style: none;
+    text-align: center;
+}
+
+.top-menu li{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5em;
+    margin: 2em 3em 1em 1em;
+    display: inline-block;
+}
+
+.top-menu li a{
+    text-decoration: none;
+    color: #588157;
+}
+
+.top-menu ul #h, .top-menu ul #w a{
+    font-weight: 700;
+    color: #344E41;
+}
+
+/*for displaying the posts*/
+.post-container{
+    text-align: center;
+    display: block;
+}
+
+.post{
+    width: 10em;
+    height: 10em;
+    background-color: #65bc91;
+    margin: 2em 3em 0 3em;
+    display: inline;
+    vertical-align: middle;
+}
+.post-header h2 {
+    justify-content: left;
+    text-align: left;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 5em;
+    font-weight: 200;
+}
+
+.post-header h1{
+    justify-content: left;
+    font-family: 'Work Sans', sans-serif;
+    text-align: left;
+    font-size: 2em;
+}
+
+.post-container p { 
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;    
+}
+
+input[type=text] {
+    padding:8px;
+    border-radius:7px;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.03);
+}
+
+button {
+    top:30px;
+    background-color:#5828aca2;
+    color: #fff;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+    min-height:30px; 
+    min-width: 120px;
+}
+
+.button:hover {
+    background-color:#002ead;
+    transition: 0.7s;
+}

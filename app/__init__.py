@@ -1,23 +1,43 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 import json
-from jinja2 import Environment, FileSystemLoader
+import os 
+from peewee import *            #for interacting w/ mysql database
+import datetime as dt
+from playhouse.shortcuts import model_to_dict
+#from jinja2 import Environment, FileSystemLoader
 
-app = Flask(__name__)
+#database integration
+
+#MAKE SURE TO START SQL SERVER W/ COMMAND: sudo /etc/init.d/mysql start
+#creates a database object from .env file
+# database = MySQLDatabase(os.getenv('MYSQL_DATABASE'), user=os.getenv('MYSQL_USER'), password=os.getenv('MYSQL_PASSWORD'), host=os.getenv('MYSQL_HOST'), port=3306)
+db = MySQLDatabase('myportfoliodb', user='myportfolio', password='mypassword', host='localhost', port=3306)
+print(db)
+
+class TimelinePost(Model):
+    name = CharField()
+    email = CharField()
+    content = TextField()
+    created_at = DateTimeField(default = dt.datetime.now)
+
+    class Meta:
+        database = db
+db.connect()
+db.create_tables([TimelinePost])
 
 #parse files w/ lists of json's
 with open('app/static/data/work.json') as file:
     data = json.load(file)
     work_d = data.copy()
-
 with open('app/static/data/hobbies.json') as file:
     data = json.load(file)
     hobbies_d = data.copy()
-
 with open('app/static/data/education.json') as file:
     data = json.load(file)
     education_d = data.copy()
 
 #flask backend
+app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -41,3 +61,35 @@ def education():
 @app.route('/travel')
 def travel():
     return render_template('travel.html')
+
+#*****THIS FUNCTION HAS DATA DEPENDENT ON THE API ENDPOINT, if endpoint changes, change this as well*****
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html', posts=TimelinePost.select().order_by(TimelinePost.created_at.desc()), endpoint='http://127.0.0.1:5000/api/timeline_post')
+
+#for posting and retrieving database info
+@app.route('/api/timeline_post', methods=['POST'])
+def post_timeline_post():
+    name = request.form['name']
+    email = request.form['email']
+    content = request.form['content']
+    timeline_post = TimelinePost.create(name=name, email=email, content=content)
+
+    return model_to_dict(timeline_post)
+
+@app.route('/api/timeline_post', methods=['GET'])
+def get_timeline_post():
+    return {
+        'timeline_posts': [model_to_dict(post) for post in TimelinePost.select().order_by(TimelinePost.created_at.desc())]
+    }
+
+#method to delete a post w a certain id
+@app.route('/api/timeline_post', methods=['DELETE'])
+def delete_timeline_post():
+    id = request.form['id']
+    try:
+        timelinepost = TimelinePost.get_by_id(id)
+        timelinepost.delete_instance()
+        return {'200': f'post with id {id} was deleted.'}
+    except DoesNotExist as e:
+            return {'400': f'post with id {id} not found'}
