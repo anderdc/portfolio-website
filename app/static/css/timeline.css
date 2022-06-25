@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;600;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200&display=swap');
+
+/* for the navbar*/
+body {
+    background-color: #F5F5F5;
+}
+
+.top-menu ul{
+    list-style: none;
+    text-align: center;
+}
+
+.top-menu li{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5em;
+    margin: 2em 3em 1em 1em;
+    display: inline-block;
+}
+
+.top-menu li a{
+    text-decoration: none;
+    color: #588157;
+}
+
+.top-menu ul #h, .top-menu ul #w a{
+    font-weight: 700;
+    color: #344E41;
+}

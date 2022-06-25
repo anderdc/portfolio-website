@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block head %}
+<!--Here goes the title of the page -->
+<title>Alexander Castañeda</title>
+<link rel="stylesheet" href='./static/css/timeline.css'>
+{% endblock %}
+
+{% block body %}
+<div class="top-menu">
+    <ul>
+        <li><a href="{{ url_for('index')}}">home</a></li>
+        <li><a href="{{ url_for('aboutme')}}">about</a></li>
+        <li><a href="{{ url_for('work')}}">work</a></li>
+        <li><a href="{{ url_for('hobbies')}}">hobbies</a></li>
+        <li><a href="{{url_for('education')}}">education</a></li>
+        <li><a href="{{ url_for('travel')}}">traveling</a></li> 
+        <li id="w"><a href="{{ url_for('timeline')}}">timeline</a></li> 
+
+    </ul>
+</div>
+
+{% endblock %}
