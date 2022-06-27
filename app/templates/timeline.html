@@ -47,13 +47,14 @@ const form = document.getElementById('form');
     e.preventDefault();
     payload = new FormData(document.getElementById("form"));
     // Post the payload using Fetch:
-    fetch( 'http://167.71.250.243:5000/api/timeline_post' ,              //endpoint hardcoded in, can this be changed?   
+    fetch( 'http://167.71.250.243:5000/api/timeline_post' ,              //endpoint hardcoded in, can this   
     {
     method: 'POST',
     body: payload,
     })
-    .then(() => {
-        window.location.reload()
+    .then((res) => {
+        window.location.reload();
+        //window.location.replace("http://172.23.13.211:5000/timeline")
     })
     .catch(() => alert("error occurred"));
 })
