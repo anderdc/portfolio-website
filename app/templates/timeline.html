@@ -27,7 +27,7 @@
     <input type="text" id="email" name="email"><br>
     <label for="content">Content:</label>
     <input type="text" id="content" name="content"><br>
-    <button type="submit">Submit</button>
+    <button id="btn" type="submit">Submit</button>
 </form> 
 
 <div class="post-container">
@@ -41,18 +41,21 @@
 </div>
 
 <script>
+//const endpoint = {{ end }}
 const form = document.getElementById('form');
  form.addEventListener('submit', function(e) {
     e.preventDefault();
     payload = new FormData(document.getElementById("form"));
     // Post the payload using Fetch:
-    fetch('http://167.71.250.243:5000/api/timeline_post', 
+    fetch( 'http://167.71.250.243:5000/api/timeline_post' ,              //endpoint hardcoded in, can this be changed?   
     {
     method: 'POST',
     body: payload,
     })
-    .then(res => res.json())
-    .then(data => console.log(data))
+    .then(() => {
+        window.location.reload()
+    })
+    .catch(() => alert("error occurred"));
 })
 </script>
 

@@ -8,7 +8,7 @@ from playhouse.shortcuts import model_to_dict
 
 #database integration
 
-#MAKE SURE TO START SQL SERVER W/ COMMAND: sudo /etc/init.d/mysql start
+#MAKE SURE TO START SQL SERVER W/ COMMAND: sudo /etc/init.d/mysql start, CAN STOP WITH 
 #creates a database object from .env file
 db = MySQLDatabase(os.getenv('MYSQL_DATABASE'), user=os.getenv('MYSQL_USER'), password=os.getenv('MYSQL_PASSWORD'), host=os.getenv('MYSQL_HOST'), port=3306)
 #db = MySQLDatabase('myportfoliodb', user='myportfolio', password='mypassword', host='localhost', port=3306)
@@ -62,10 +62,10 @@ def education():
 def travel():
     return render_template('travel.html')
 
-#*****THIS FUNCTION HAS DATA DEPENDENT ON THE API ENDPOINT, if endpoint changes, change this as well*****
+#is it possible to pass in and use jinja variables in a script???
 @app.route('/timeline')
 def timeline():
-    return render_template('timeline.html', posts=TimelinePost.select().order_by(TimelinePost.created_at.desc()), endpoint='http://127.0.0.1:5000/api/timeline_post')
+    return render_template('timeline.html', posts=TimelinePost.select().order_by(TimelinePost.created_at.desc()), end='http://167.71.250.243:5000/api/timeline_post')
 
 #for posting and retrieving database info
 @app.route('/api/timeline_post', methods=['POST'])
