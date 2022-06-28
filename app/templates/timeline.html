@@ -46,12 +46,13 @@ const form = document.getElementById('form');
  form.addEventListener('submit', function(e) {
     e.preventDefault();
     payload = new FormData(document.getElementById("form"));
-    // Post the payload using Fetch:
-    fetch( 'http://167.71.250.243:5000/api/timeline_post' ,              //endpoint hardcoded in, can this   
+    // Post the payload using Fetch
+    fetch( 'http://172.23.13.211:5000/api/timeline_post' ,              //endpoint hardcoded in, can this be changed to jinja syntax 
     {
     method: 'POST',
     body: payload,
     })
+    .then((res) => res.json())
     .then(() => {
         window.location.reload();
         //window.location.replace("http://167.71.250.243:5000/timeline")
