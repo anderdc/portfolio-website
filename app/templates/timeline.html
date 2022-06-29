@@ -47,7 +47,7 @@ const form = document.getElementById('form');
     e.preventDefault();
     payload = new FormData(document.getElementById("form"));
     // Post the payload using Fetch
-    fetch( '/api/timeline_post' ,              //endpoint hardcoded in, can this be changed to jinja syntax 
+    fetch( 'http://167.71.250.243:5000/api/timeline_post' ,              //endpoint hardcoded in, can this be changed to jinja syntax 
     {
     method: 'POST',
     body: payload,
