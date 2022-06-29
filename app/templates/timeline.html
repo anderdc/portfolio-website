@@ -41,9 +41,8 @@
 </div>
 
 <script>
-//const endpoint = {{ end }}
 const form = document.getElementById('form');
- form.addEventListener('submit', function(e) {
+form.addEventListener('submit', function(e) {
     e.preventDefault();
     payload = new FormData(document.getElementById("form"));
     // Post the payload using Fetch
@@ -55,7 +54,6 @@ const form = document.getElementById('form');
     .then((res) => res.json())
     .then(() => {
         window.location.reload();
-        //window.location.replace("http://167.71.250.243:5000/timeline")
     })
     .catch(() => alert("error occurred"));
 })
