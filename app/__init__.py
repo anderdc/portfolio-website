@@ -12,7 +12,15 @@ load_dotenv('.env')
 
 #MAKE SURE TO START SQL SERVER W/ COMMAND: sudo /etc/init.d/mysql start, CAN STOP WITH 
 #creates a database object from .env file
-db = MySQLDatabase(os.getenv('MYSQL_DATABASE'), user=os.getenv('MYSQL_USER'), password=os.getenv('MYSQL_PASSWORD'), host=os.getenv('MYSQL_HOST'), port=3306)
+if os.getenv("TESTING") == "true":
+	print("Running in test mode")
+	db = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
+else:
+	db = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
+		user= os.getenv("MYSQL_USER"),
+		password=os.getenv("MYSQL_PASSWORD"),
+		host=os.getenv("MYSQL_HOST"),
+		port=3306)
 #db = MySQLDatabase('myportfoliodb', user='myportfolio', password='mypassword', host='localhost', port=3306)
 print(db)
 
