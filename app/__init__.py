@@ -1,16 +1,26 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,Response
 import json
 import os 
 from peewee import *            #for interacting w/ mysql database
 import datetime as dt
 from playhouse.shortcuts import model_to_dict
+from dotenv import load_dotenv
+load_dotenv('.env')
 #from jinja2 import Environment, FileSystemLoader
 
 #database integration
 
 #MAKE SURE TO START SQL SERVER W/ COMMAND: sudo /etc/init.d/mysql start, CAN STOP WITH 
 #creates a database object from .env file
-db = MySQLDatabase(os.getenv('MYSQL_DATABASE'), user=os.getenv('MYSQL_USER'), password=os.getenv('MYSQL_PASSWORD'), host=os.getenv('MYSQL_HOST'), port=3306)
+if os.getenv("TESTING") == "true":
+	print("Running in test mode")
+	db = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
+else:
+	db = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
+		user= os.getenv("MYSQL_USER"),
+		password=os.getenv("MYSQL_PASSWORD"),
+		host=os.getenv("MYSQL_HOST"),
+		port=3306)
 #db = MySQLDatabase('myportfoliodb', user='myportfolio', password='mypassword', host='localhost', port=3306)
 print(db)
 
@@ -70,6 +80,14 @@ def timeline():
 #for posting and retrieving database info
 @app.route('/api/timeline_post', methods=['POST'])
 def post_timeline_post():
+    if 'name' not in request.form:
+        return Response("Invalid name", status=400)
+    if 'email' not in request.form or '@' not in request.form['email']:
+        return Response("Invalid email", status=400)
+    if 'content' not in request.form or request.form['content'] == '':
+        return Response("Invalid content", status=400)
+
+    
     name = request.form['name']
     email = request.form['email']
     content = request.form['content']
@@ -80,7 +98,7 @@ def post_timeline_post():
 @app.route('/api/timeline_post', methods=['GET'])
 def get_timeline_post():
     return {
-        'timeline_posts': [model_to_dict(post) for post in TimelinePost.select().order_by(TimelinePost.created_at.desc())]
+        'timeline_posts': [model_to_dict(post) for post in TimelinePost.select().order_by(TimelinePost.created_at.desc())],
     }
 
 #method to delete a post w a certain id
