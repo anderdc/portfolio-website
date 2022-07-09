@@ -37,4 +37,6 @@ You'll now be able to access the website at `localhost:5000` or `127.0.0.1:5000`
 This project uses docker to containerize and keep the code running smoothly on any environment.
 
 `docker compose up` will not rebuild the container image even if you have updated Dockerfile or project files. Therefore, if you changed any of those files, you should run `docker compose up` with the `--build` flag, and `d` detached, which will trigger a rebuild of the container image, and start container in a detached state.
- 
+
+to create a container with a specified docker compose file use the `-f` flag
+`docker compose -f docker-compose.prod.yml up -d`
