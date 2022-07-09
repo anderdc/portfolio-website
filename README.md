@@ -32,3 +32,9 @@ You should get a response like this in the terminal:
 ```
 
 You'll now be able to access the website at `localhost:5000` or `127.0.0.1:5000` in the browser!
+
+## Containerization
+This project uses docker to containerize and keep the code running smoothly on any environment.
+
+`docker compose up` will not rebuild the container image even if you have updated Dockerfile or project files. Therefore, if you changed any of those files, you should run `docker compose up` with the `--build` flag, and `d` detached, which will trigger a rebuild of the container image, and start container in a detached state.
+ 
