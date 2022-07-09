@@ -36,12 +36,16 @@ body {
 }
 
 .post{
-    width: 10em;
-    height: 10em;
-    background-color: #65bc91;
-    margin: 2em 3em 0 3em;
-    display: inline;
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+    height: 290px;
+    border: black solid 2px;
+    background: #e4a7a7;
+    margin: 3em 3em 3em 3em;
+    display: inline-block;
     vertical-align: middle;
+    text-align: middle;
 }
 .post-header h2 {
     justify-content: left;
@@ -84,4 +88,8 @@ button {
 .button:hover {
     background-color:#002ead;
     transition: 0.7s;
+}
+
+.label content{
+    width: 50%;
 }

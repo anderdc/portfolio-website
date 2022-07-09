@@ -9,8 +9,6 @@ load_dotenv('.env')
 #from jinja2 import Environment, FileSystemLoader
 
 #database integration
-
-#MAKE SURE TO START SQL SERVER W/ COMMAND: sudo /etc/init.d/mysql start, CAN STOP WITH 
 #creates a database object from .env file
 if os.getenv("TESTING") == "true":
 	print("Running in test mode")
@@ -21,7 +19,6 @@ else:
 		password=os.getenv("MYSQL_PASSWORD"),
 		host=os.getenv("MYSQL_HOST"),
 		port=3306)
-#db = MySQLDatabase('myportfoliodb', user='myportfolio', password='mypassword', host='localhost', port=3306)
 print(db)
 
 class TimelinePost(Model):
@@ -72,10 +69,9 @@ def education():
 def travel():
     return render_template('travel.html')
 
-#is it possible to pass in and use jinja variables in a script???
 @app.route('/timeline')
 def timeline():
-    return render_template('timeline.html', posts=TimelinePost.select().order_by(TimelinePost.created_at.desc()), end='http://167.71.250.243:5000/api/timeline_post')
+    return render_template('timeline.html', posts=TimelinePost.select().order_by(TimelinePost.created_at.desc()))
 
 #for posting and retrieving database info
 @app.route('/api/timeline_post', methods=['POST'])
@@ -87,12 +83,10 @@ def post_timeline_post():
     if 'content' not in request.form or request.form['content'] == '':
         return Response("Invalid content", status=400)
 
-    
     name = request.form['name']
     email = request.form['email']
     content = request.form['content']
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
-
     return model_to_dict(timeline_post)
 
 @app.route('/api/timeline_post', methods=['GET'])
@@ -108,6 +102,6 @@ def delete_timeline_post():
     try:
         timelinepost = TimelinePost.get_by_id(id)
         timelinepost.delete_instance()
-        return {'200': f'post with id {id} was deleted.'}
+        return Response(f'post with id {id} was deleted', status=200)
     except DoesNotExist as e:
-            return {'400': f'post with id {id} not found'}
+            return Response(f'post with id {id} not found.', status=400)
