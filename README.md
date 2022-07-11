@@ -40,3 +40,9 @@ This project uses docker to containerize and keep the code running smoothly on a
 
 to create a container with a specified docker compose file use the `-f` flag
 `docker compose -f docker-compose.prod.yml up -d`
+
+## Scripts
+Two bash scripts are included for running tests and automating the deployment of site.
+
+`./redeploy-script.sh` will pull recent changes from github repo and rebuild/start containers for program
+`./run_test.sh` runs the tests specified in the tests/ directory.
