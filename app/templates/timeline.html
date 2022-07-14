@@ -48,6 +48,7 @@ form.addEventListener('submit', function(e) {
     // Post the payload using Fetch
     fetch( '/api/timeline_post' ,              //endpoint hardcoded in, can this be changed to jinja syntax 
     {
+    credentials: 'same-origin',
     method: 'POST',
     body: payload,
     })
