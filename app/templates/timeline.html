@@ -51,6 +51,7 @@ form.addEventListener('submit', function(e) {
     method: 'POST',
     body: payload,
     })
+    .then((res) => console.log(res.status))
     .then(() => {
         window.location.reload();
     })
