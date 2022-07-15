@@ -74,6 +74,12 @@ input[type=text] {
     box-shadow:0 0 15px 4px rgba(0,0,0,0.03);
 }
 
+input[type=email] {
+    padding:8px;
+    border-radius:7px;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.03);
+}
+
 button {
     top:30px;
     background-color:#5828aca2;
