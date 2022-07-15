@@ -55,7 +55,11 @@ form.addEventListener('submit', function(e) {
     .then(() => {
         window.location.reload();
     })
-    .catch(() => alert("error"));
+    .catch(() => 
+    {
+     console.error(err);
+      alert("error");
+    });
 })
 </script>
 
