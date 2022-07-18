@@ -77,7 +77,6 @@ def timeline():
 #for posting and retrieving database info
 @app.route('/api/timeline_post', methods=['POST'])
 def post_timeline_post():
-    print("calling post function", file=sys.stderr)
     if 'name' not in request.form:
         return Response("Invalid name", status=400)
     if 'email' not in request.form or '@' not in request.form['email']:
