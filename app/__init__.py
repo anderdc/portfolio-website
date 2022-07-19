@@ -5,7 +5,6 @@ from peewee import *            #for interacting w/ mysql database
 import datetime as dt
 from playhouse.shortcuts import model_to_dict
 from dotenv import load_dotenv
-import sys
 load_dotenv('.env')
 #from jinja2 import Environment, FileSystemLoader
 
@@ -79,7 +78,7 @@ def timeline():
 def post_timeline_post():
     if 'name' not in request.form:
         return Response("Invalid name", status=400)
-    if 'email' not in request.form or '@' not in request.form['email']:
+    if 'email' not in request.form:
         return Response("Invalid email", status=400)
     if 'content' not in request.form or request.form['content'] == '':
         return Response("Invalid content", status=400)
