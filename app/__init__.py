@@ -78,7 +78,7 @@ def timeline():
 def post_timeline_post():
     if 'name' not in request.form:
         return Response("Invalid name", status=400)
-    if 'email' not in request.form:
+    if 'email' not in request.form or '@' not in request.form['email']:
         return Response("Invalid email", status=400)
     if 'content' not in request.form or request.form['content'] == '':
         return Response("Invalid content", status=400)
