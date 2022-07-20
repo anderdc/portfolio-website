@@ -46,18 +46,22 @@ form.addEventListener('submit', function(e) {
     e.preventDefault();
     payload = new FormData(document.getElementById("form"));
     // Post the payload using Fetch
-    fetch( '/api/timeline_post' ,              //endpoint hardcoded in, can this be changed to jinja syntax 
+    fetch( '/api/timeline_post' ,               
     {
     method: 'POST',
     body: payload,
     })
-    .then((res) => alert(res.status))
     .then(() => {
         window.location.reload();
     })
     .catch((err) => 
     {
-      alert(err.message);
+        if(err.status === 429){
+            alert("Too many posts were made.");
+        }
+        else{
+            alert("There was an error handling the POST request.")
+        }
     });
 })
 </script>
