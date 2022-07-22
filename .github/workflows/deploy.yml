@@ -33,7 +33,7 @@ jobs:
      
       - name: Print Container Status
         run: |
-          cd $PROJECT_ROOT
+          sudo cd $PROJECT_ROOT
           docker-compose ps
         env:
           PROJECT_ROOT: ${{ secrets.PROJECT_ROOT}}
