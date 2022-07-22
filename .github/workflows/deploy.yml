@@ -33,6 +33,7 @@ jobs:
      
       - name: Print Container Status
         run: |
+          sudo su
           cd $PROJECT_ROOT
           docker-compose ps
         env:
