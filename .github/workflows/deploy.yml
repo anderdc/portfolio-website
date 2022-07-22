@@ -32,10 +32,7 @@ jobs:
         run: ssh my-vps '~/redeploy-site.sh'
      
       - name: Print Container Status
-        run: |
-          sudo su
-          cd $PROJECT_ROOT
-          docker-compose ps
+        run: ssh my-vps 'cd $PROJECT_ROOT && docker-compose ps'
         env:
           PROJECT_ROOT: ${{ secrets.PROJECT_ROOT }}
 
