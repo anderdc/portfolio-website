@@ -36,7 +36,7 @@ jobs:
           sudo cd $PROJECT_ROOT
           docker-compose ps
         env:
-          PROJECT_ROOT: ${{ secrets.PROJECT_ROOT}}
+          PROJECT_ROOT: ${{ secrets.PROJECT_ROOT }}
 
       - name: Send Discord Notification
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
