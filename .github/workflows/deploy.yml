@@ -42,5 +42,5 @@ jobs:
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content= Failure occured with website deployment 💩..."
 
       - name: Discord Success Post
-        if: steps.deploy.outcome == "success" || steps.printStatus.outcome == "success"
+        if: success()
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
