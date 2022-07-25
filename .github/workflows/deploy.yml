@@ -33,8 +33,7 @@ jobs:
      
       - name: Print Container Status
         run: ssh my-vps 'cd ${{ secrets.PROJECT_ROOT }} && pwd'
-        env:
-          PROJECT_ROOT: ${{ secrets.PROJECT_ROOT }}
+
 
       - name: Send Discord Notification
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
