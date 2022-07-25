@@ -29,11 +29,18 @@ jobs:
           SSH_IP: ${{ secrets.SSH_IP }}
 
       - name: Deploy site
+        id: deploy
         run: ssh my-vps '~/redeploy-site.sh'
-     
+
       - name: Print Container Status
+        id: printStatus
         run: ssh my-vps 'cd ${{ secrets.PROJECT_ROOT }} && pwd'
 
+      #for notifying of deploy or statusfailure
+      - name: Notify Deploy Failure
+        if: steps.deploy.outcome == "failure" || steps.printStatus.outcome == "failure"
+        run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content= Failure occured with website deployment 💩..."
 
-      - name: Send Discord Notification
+      - name: Discord Success Post
+        if: steps.deploy.outcome == "success" || steps.printStatus.outcome == "success"
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
