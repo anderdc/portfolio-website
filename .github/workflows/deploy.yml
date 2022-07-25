@@ -38,7 +38,7 @@ jobs:
 
       #for notifying of deploy or statusfailure
       - name: Notify Deploy Failure
-        if: steps.deploy.outcome == "failure" || steps.printStatus.outcome == "failure"
+        if: failure()
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content= Failure occured with website deployment 💩..."
 
       - name: Discord Success Post
