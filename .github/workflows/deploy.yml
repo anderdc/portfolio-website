@@ -34,7 +34,7 @@ jobs:
 
       - name: Print Container Status
         id: printStatus
-        run: ssh my-vps 'cd ${{ secrets.PROJECT_ROOT }} && pwd'
+        run: ssh my-vps 'cd ${{ secrets.PROJECT_ROOT }} && docker compose ps'
 
       #for notifying of deploy or statusfailure
       - name: Notify Deploy Failure
