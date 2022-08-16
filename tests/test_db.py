@@ -25,3 +25,7 @@ class TestTimelinePost(unittest.TestCase):
         assert first_post.id == 1
         second_post= TimelinePost.create(name='Jane Doe', email='jane@example.com', content='Hello world, I\'m Jane!')
         assert second_post.id == 2
+        
+        timeline_posts = TimelinePost.select().order_by(TimelinePost.created_at.asc())
+        assert timeline_posts[0].id == 1
+        assert timeline_posts[1].id == 2
