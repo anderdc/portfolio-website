@@ -8,7 +8,7 @@ class AppTestCase(unittest.TestCase):
     def setUp(self):
         self.client = app.test_client()
     
-    def test_home(self):
+    def test_site(self):
         response = self.client.get("/")
         assert response.status_code == 200
         html = response.get_data(as_text=True)
@@ -19,7 +19,29 @@ class AppTestCase(unittest.TestCase):
         response = self.client.get("/")
         assert response.status_code == 200
         html = response.get_data(as_text=True)
-        assert " <div class=\"home-profile-image\">" in html
+        assert "<div class=\"home-profile-image\">" in html
+
+        response = self.client.get("/aboutme")
+        assert response.status_code == 200
+        html = response.get_data(as_text=True)
+        assert "<div class=\"aboutMe-left-text\">" in html
+
+        response = self.client.get("/work")
+        assert response.status_code == 200
+        html = response.get_data(as_text=True)
+        assert "<h1>Some projects<br><span> I've worked in ⛏ </span> </h1>" in html
+
+        response = self.client.get("/hobbies")
+        assert response.status_code == 200
+        html = response.get_data(as_text=True)
+        assert "<h1>Things I do<span> in my free time 🕑</span></h1>" in html
+
+        response = self.client.get("/education")
+        assert response.status_code == 200
+        html = response.get_data(as_text=True)
+        assert "<h1>Part of my <span>education 📚</span></h1>" in html
+
+
     
     #removing timeline
     # def test_timeline(self):

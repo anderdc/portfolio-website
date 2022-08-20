@@ -65,10 +65,6 @@ def hobbies():
 def education():
     return render_template('education.html', education = education_d)
 
-@app.route('/travel')
-def travel():
-    return render_template('travel.html')
-
 # @app.route('/timeline')
 # def timeline():
 #     return render_template('timeline.html', posts=TimelinePost.select().order_by(TimelinePost.created_at.desc()))
