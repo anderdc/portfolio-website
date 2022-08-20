@@ -6,10 +6,10 @@
         "picture": "./static/img/evenet.png"
     },
     {
-        "name": "Work in Progress",
-        "description": "n/a",
-        "link": "",
-        "picture": "./static/img/empty.jpeg"
+        "name": "Web3 Auction Site",
+        "description": "A Web3 auction site made with JavaFX and socket programming.",
+        "link": "https://github.com/anderdc/auction-site",
+        "picture": "./static/img/auction-site-pic.png"
     },
     {
         "name": "Work in Progress",

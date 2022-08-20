@@ -6,7 +6,6 @@ import datetime as dt
 from playhouse.shortcuts import model_to_dict
 from dotenv import load_dotenv
 load_dotenv('.env')
-#from jinja2 import Environment, FileSystemLoader
 
 #database integration
 #creates a database object from .env file
