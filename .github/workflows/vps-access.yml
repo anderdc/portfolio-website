@@ -8,7 +8,7 @@ on:
 
 jobs:
   vps-access:
-    name: "Accessing Personal VPS as Superuser"
+    name: "Accessing VPS as Superuser"
     runs-on: ubuntu-latest
     steps:
       - name: Configure SSH
@@ -28,5 +28,5 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_IP: ${{ secrets.SSH_IP }}
 
-      -name: Test Command
+      - name: Test Command
         run: ssh my-vps 'echo Hello'
