@@ -10,27 +10,27 @@ load_dotenv('.env')
 
 #database integration
 #creates a database object from .env file
-if os.getenv("TESTING") == "true":
-	print("Running in test mode")
-	db = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
-else:
-	db = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
-		user= os.getenv("MYSQL_USER"),
-		password=os.getenv("MYSQL_PASSWORD"),
-		host=os.getenv("MYSQL_HOST"),
-		port=3306)
-print(db)
+# if os.getenv("TESTING") == "true":
+# 	print("Running in test mode")
+# 	db = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
+# else:
+# 	db = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
+# 		user= os.getenv("MYSQL_USER"),
+# 		password=os.getenv("MYSQL_PASSWORD"),
+# 		host=os.getenv("MYSQL_HOST"),
+# 		port=3306)
+# print(db)
 
-class TimelinePost(Model):
-    name = CharField()
-    email = CharField()
-    content = TextField()
-    created_at = DateTimeField(default = dt.datetime.now)
+# class TimelinePost(Model):
+#     name = CharField()
+#     email = CharField()
+#     content = TextField()
+#     created_at = DateTimeField(default = dt.datetime.now)
 
-    class Meta:
-        database = db
-db.connect()
-db.create_tables([TimelinePost])
+#     class Meta:
+#         database = db
+# db.connect()
+# db.create_tables([TimelinePost])
 
 #parse files w/ lists of json's
 with open('app/static/data/work.json') as file:
@@ -65,43 +65,39 @@ def hobbies():
 def education():
     return render_template('education.html', education = education_d)
 
-@app.route('/travel')
-def travel():
-    return render_template('travel.html')
+# @app.route('/timeline')
+# def timeline():
+#     return render_template('timeline.html', posts=TimelinePost.select().order_by(TimelinePost.created_at.desc()))
 
-@app.route('/timeline')
-def timeline():
-    return render_template('timeline.html', posts=TimelinePost.select().order_by(TimelinePost.created_at.desc()))
+# #for posting and retrieving database info
+# @app.route('/api/timeline_post', methods=['POST'])
+# def post_timeline_post():
+#     if 'name' not in request.form:
+#         return Response("Invalid name", status=400)
+#     if 'email' not in request.form or '@' not in request.form['email']:
+#         return Response("Invalid email", status=400)
+#     if 'content' not in request.form or request.form['content'] == '':
+#         return Response("Invalid content", status=400)
 
-#for posting and retrieving database info
-@app.route('/api/timeline_post', methods=['POST'])
-def post_timeline_post():
-    if 'name' not in request.form:
-        return Response("Invalid name", status=400)
-    if 'email' not in request.form or '@' not in request.form['email']:
-        return Response("Invalid email", status=400)
-    if 'content' not in request.form or request.form['content'] == '':
-        return Response("Invalid content", status=400)
+#     name = request.form['name']
+#     email = request.form['email']
+#     content = request.form['content']
+#     timeline_post = TimelinePost.create(name=name, email=email, content=content)
+#     return model_to_dict(timeline_post)
 
-    name = request.form['name']
-    email = request.form['email']
-    content = request.form['content']
-    timeline_post = TimelinePost.create(name=name, email=email, content=content)
-    return model_to_dict(timeline_post)
+# @app.route('/api/timeline_post', methods=['GET'])
+# def get_timeline_post():
+#     return {
+#         'timeline_posts': [model_to_dict(post) for post in TimelinePost.select().order_by(TimelinePost.created_at.desc())],
+#     }
 
-@app.route('/api/timeline_post', methods=['GET'])
-def get_timeline_post():
-    return {
-        'timeline_posts': [model_to_dict(post) for post in TimelinePost.select().order_by(TimelinePost.created_at.desc())],
-    }
-
-#method to delete a post w a certain id
-@app.route('/api/timeline_post', methods=['DELETE'])
-def delete_timeline_post():
-    id = request.form['id']
-    try:
-        timelinepost = TimelinePost.get_by_id(id)
-        timelinepost.delete_instance()
-        return Response(f'post with id {id} was deleted', status=200)
-    except DoesNotExist as e:
-            return Response(f'post with id {id} not found.', status=400)
+# #method to delete a post w a certain id
+# @app.route('/api/timeline_post', methods=['DELETE'])
+# def delete_timeline_post():
+#     id = request.form['id']
+#     try:
+#         timelinepost = TimelinePost.get_by_id(id)
+#         timelinepost.delete_instance()
+#         return Response(f'post with id {id} was deleted', status=200)
+#     except DoesNotExist as e:
+#             return Response(f'post with id {id} not found.', status=400)
