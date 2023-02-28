@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Linkedin",
+        "link": "https://www.linkedin.com/in/castaneda-alexander/",
+        "picture": "./static/img/linkedin-logo.png"
+    },
+    {
+        "name": "GitHub",
+        "link": "https://github.com/anderdc",
+        "picture": "./static/img/github-logo.png"
+    },
+    {
+        "name": "Stack Overflow",
+        "link": "https://stackoverflow.com/users/18069883/kimbo",
+        "picture": "./static/img/stackoverflow-logo.png"
+    },
+    {
+        "name": "Leetcode",
+        "link": "https://leetcode.com/anderdc/",
+        "picture": "./static/img/leetcode-logo.png"
+    },
+    {
+        "name": "Kaggle",
+        "link": "https://www.kaggle.com/andertho",
+        "picture": "./static/img/kaggle-logo.png"
+    },
+    {
+        "name": "Twitter",
+        "link": "https://twitter.com/LordKimboSpice",
+        "picture": "./static/img/twitter-logo.png"
+    }
+]

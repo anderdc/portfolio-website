@@ -12,9 +12,9 @@
         "picture": "./static/img/auction-site-pic.png"
     },
     {
-        "name": "Work in Progress",
-        "description": "n/a",
+        "name": "Nerve Signal Classification",
+        "description": "Processing and classifying peripheral nerve signals with ML.",
         "link": "",
-        "picture": "./static/img/empty.jpeg"
+        "picture": "./static/img/ml-pic.png"
     }
 ]

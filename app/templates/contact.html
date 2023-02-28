@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!--Here goes the title of the page -->
+<title>Alexander Castañeda</title>
+<link rel="stylesheet" href='./static/css/contact.css'>
+{% endblock %}
+
+{% block body %}
+
+<div class="top-menu">
+    <ul>
+        <li><a href="{{ url_for('index')}}">home</a></li>
+        <li><a href="{{ url_for('aboutme')}}">about</a></li>
+        <li><a href="{{ url_for('work')}}">work</a></li>
+        <li><a href="{{ url_for('hobbies')}}">hobbies</a></li>
+        <li><a href="{{ url_for('education')}}">education</a></li>
+        <li id="w"><a href="{{ url_for('contact')}}">contact</a></li>
+
+    </ul>
+</div>
+
+<div class="title">
+    <h1>How to<br><span> get in touch📱</span> </h1>
+</div>
+
+
+<div class="contacts">
+    
+    {% for experience in contact %}
+        <div class="inline-block">
+            <!-- <p>{{ experience.name }}</p> -->
+            <a href="{{ experience.link }}"> <img src="{{ experience.picture }}"></a>
+        </div>
+            
+
+        <!-- <div class="footer-container">
+            <div class="inline-block">
+                <a href="https://twitter.com/LordKimboSpice"> <img src="./static/img/twitter-logo.png"></a>
+            </div>
+            <div class="inline-block">
+                <a href="https://www.linkedin.com/in/alexander-casta%C3%B1eda-990a8b191/"> <img
+                        src="./static/img/linkedin-logo.png"></a>
+            </div>
+            <div class="inline-block">
+                <a href="https://github.com/anderdc"> <img src="./static/img/github-logo.png"></a>
+            </div>
+        </div> -->
+    {% endfor %}
+
+</div>
+{% endblock %}

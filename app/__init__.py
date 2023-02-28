@@ -31,7 +31,7 @@ load_dotenv('.env')
 # db.connect()
 # db.create_tables([TimelinePost])
 
-#parse files w/ lists of json's
+#parse data files w/ lists of json's
 with open('app/static/data/work.json') as file:
     data = json.load(file)
     work_d = data.copy()
@@ -41,6 +41,9 @@ with open('app/static/data/hobbies.json') as file:
 with open('app/static/data/education.json') as file:
     data = json.load(file)
     education_d = data.copy()
+with open('app/static/data/contact.json') as file:
+    data = json.load(file)
+    contact_d = data.copy()
 
 #flask backend
 app = Flask(__name__)
@@ -63,6 +66,10 @@ def hobbies():
 @app.route('/education')
 def education():
     return render_template('education.html', education = education_d)
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html', contact=contact_d)
 
 # @app.route('/timeline')
 # def timeline():

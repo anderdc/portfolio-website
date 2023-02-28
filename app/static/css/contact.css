@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200&display=swap');
+
+body {
+    background-color: #F5F5F5;
+}
+
+.top-menu ul{
+    list-style: none;
+    text-align: center;
+}
+
+.top-menu li{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5em;
+    margin: 2em 3em 1em 1em;
+    display: inline-block;
+}
+
+.top-menu li a{
+    text-decoration: none;
+    color: #588157;
+}
+
+.top-menu ul #h, .top-menu ul #w a{
+    font-weight: 700;
+    color: #344E41;
+}
+
+.title h1{
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    font-size: 3.5em;
+}
+
+.title span{
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+}
+
+
+
+.contacts{
+    text-align: center;
+    display: flex;
+    justify-content:"center";
+}
+
+.inline-block{
+    display: flex;
+    justify-content:"center";
+    height: 250px;
+    width: 250px;
+}
+
+/* .inline-block p{
+    font-family: 'Work Sans', sans-serif;
+    text-align: center;
+} */
+
+.inline-block img{
+    max-width: 100%;
+    max-height: 100%;
+}
